@@ -3,8 +3,6 @@
 Instalado nodepop desde clonado de url
 npm install
 
-
-
 npx create-react-app
 
 npm create vite@latest
@@ -23,11 +21,19 @@ componentes react basado en estilos tenemos que importar styled de styled-compon
 
 podemos hacerlo con fecht o con axios
 
-npm i axios 
+npm i axios
 importamos axios
 
- exportamos la url
+exportamos la url
 
 export const client = axios.create({
-    baseUrl('http://localhost:8000'),
+baseUrl('http://localhost:3001'),
 });
+
+creamos una variale de entorno en .env para futuros cambios
+
+# hemos configurado prettier para que de formato automaticamente
+
+e settings "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+creamos una pagina de login
