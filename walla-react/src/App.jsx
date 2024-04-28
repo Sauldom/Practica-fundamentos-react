@@ -1,15 +1,19 @@
 import AdsPage from "./adsPage/adsPage.jsx";
 import LoginPage from "./loginPage/loginPage.jsx";
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   const [islogged, setIsLogged] = useState(false);
   const handleLogin = () => setIsLogged(true);
   return (
-    <>
-      {/* <AdsPage />*/}
-      <LoginPage onLogin={handleLogin} />
-    </>
+    <Suspense fallback="loading">
+      <Routes>
+        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route path="/ads" element={<AdsPage />} />
+        <Route path="/" element={<Navigate to="/login" />} />
+      </Routes>
+    </Suspense>
   );
 }
 
