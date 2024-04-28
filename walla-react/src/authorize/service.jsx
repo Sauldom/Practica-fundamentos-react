@@ -1,7 +1,9 @@
-import { client } from "../client/client.jsx";
+import { client, setAuthHeader } from "../client/client.jsx";
 
-export const login = (credentials) => {
-  return client.post("/api/auth/login", credentials);
+export const login = async (credentials) => {
+  return client
+    .post("/api/auth/login", credentials)
+    .then(({ accessToken }) => setAuthHeader(accessToken));
 };
 
 export default login;

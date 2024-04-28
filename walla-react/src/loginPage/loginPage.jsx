@@ -14,7 +14,7 @@ function LoginPage({ onLogin }) {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(event);
+
     try {
       const response = await login({
         email: formValues.username,

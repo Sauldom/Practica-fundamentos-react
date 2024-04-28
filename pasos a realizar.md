@@ -43,3 +43,5 @@ creamos un formulario que se podria refectorizar no tiene estilos
 pero ya se meten los datos en el estado
 
 ahora vamos a mandarlo a la api
+
+me daba un error por no tener el cambio email bien puesto
