@@ -5,6 +5,8 @@ function LoginPage({ onLogin }) {
     username: "",
     password: "",
   });
+  const [checked, setChecked] = useState(false);
+  const buttonDisabled = !formValues.username || !formValues.password;
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValues((currentValues) => ({
@@ -16,12 +18,11 @@ function LoginPage({ onLogin }) {
     event.preventDefault();
 
     try {
-      const response = await login({
+      await login({
         email: formValues.username,
         password: formValues.password,
       });
       onLogin();
-      console.log("esta es la respuesta del login: ", response);
     } catch (error) {
       throw new Error(error);
     }
@@ -57,7 +58,22 @@ function LoginPage({ onLogin }) {
         />
 
         <br />
-        <button className="logIn-Button" type="submit">
+        <label htmlFor="login-checkbox" className="form-label">
+          Recordar:
+        </label>
+        <br />
+        <input
+          type="checkbox"
+          id="login-checkbox"
+          className="loginForm-field"
+          checked={checked}
+          onChange={(event) => setChecked(event.target.checked)}
+        />
+        <button
+          className="logIn-Button"
+          type="submit"
+          disabled={buttonDisabled}
+        >
           Login
         </button>
       </form>
