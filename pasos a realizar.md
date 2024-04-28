@@ -36,4 +36,10 @@ creamos una variale de entorno en .env para futuros cambios
 
 e settings "editor.defaultFormatter": "esbenp.prettier-vscode",
 
-creamos una pagina de login
+# Empezamos la creacion una pagina de login
+
+creamos un formulario que se podria refectorizar no tiene estilos
+
+pero ya se meten los datos en el estado
+
+ahora vamos a mandarlo a la api
