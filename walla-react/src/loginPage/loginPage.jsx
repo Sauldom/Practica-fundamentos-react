@@ -1,10 +1,12 @@
 import { useState } from "react";
 import login from "../authorize/service.jsx";
+import { useNavigate } from "react-router-dom";
 function LoginPage({ onLogin }) {
   const [formValues, setFormValues] = useState({
     username: "",
     password: "",
   });
+  const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
   const buttonDisabled = !formValues.username || !formValues.password;
   const handleChange = (event) => {
@@ -23,6 +25,7 @@ function LoginPage({ onLogin }) {
         password: formValues.password,
       });
       onLogin();
+      navigate("/ads");
     } catch (error) {
       throw new Error(error);
     }
