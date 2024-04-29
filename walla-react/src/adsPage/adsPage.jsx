@@ -1,20 +1,26 @@
 import { useEffect, useState } from "react";
 import { getAds } from "../service/service.jsx";
+import Advertisement from "./componentes/advertisement.jsx";
 
 function AdsPage() {
   const [ads, setAds] = useState([]);
+
   useEffect(() => {
-    getAds().then((ads) => setAds(ads));
+    getAds().then((ads) => {
+      setAds(ads);
+      console.log(ads);
+    });
   }, []);
 
   return (
     <>
       <div className="titulo">Pagina de anuncios</div>
       <ul>
-        {ads &&
-          ads.map((ads) => {
-            <li key={ads.id}>{ads.name}</li>;
-          })}
+        {ads.map(({ id, ...ad }) => (
+          <li key={id}>
+            <Advertisement {...ad} />
+          </li>
+        ))}
       </ul>
     </>
   );
