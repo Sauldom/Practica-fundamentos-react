@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAds } from "../service/service.jsx";
 import Advertisement from "./componentes/advertisement.jsx";
+import Layout from "./componentes/layout/Layout.jsx";
 
 function AdsPage() {
   const [ads, setAds] = useState([]);
@@ -13,7 +14,7 @@ function AdsPage() {
   }, []);
 
   return (
-    <>
+    <Layout>
       <div className="titulo">Pagina de anuncios</div>
       <ul>
         {ads.map(({ id, ...ad }) => (
@@ -22,7 +23,7 @@ function AdsPage() {
           </li>
         ))}
       </ul>
-    </>
+    </Layout>
   );
 }
 
