@@ -1,10 +1,14 @@
-import logo from "../../../assets/logo.svg";
+import LogoComponent from "../../../assets/LogoComponent";
+import Button from "../StyledButton";
+
 function Header() {
   return (
     <header>
       <div>
-        <img src={logo} alt="logo del programador" />
-        <nav></nav>
+        <LogoComponent width={32} height={32} />
+        <nav>
+          <Button>Crear Anuncio</Button>
+        </nav>
       </div>
     </header>
   );
