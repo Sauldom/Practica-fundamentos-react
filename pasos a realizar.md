@@ -45,3 +45,7 @@ pero ya se meten los datos en el estado
 ahora vamos a mandarlo a la api
 
 me daba un error por no tener el campo email bien puesto
+
+# podemos pasar props hacia abajo
+
+con {..props} y con {xx, ..rest}

@@ -1,8 +1,11 @@
 import { useState } from "react";
-import login from "../authorize/service.jsx";
+import { login } from "../authorize/service.jsx";
 import { useNavigate } from "react-router-dom";
 import Layout from "../adsPage/componentes/layout/Layout.jsx";
-function LoginPage({ onLogin }) {
+import { useAuth } from "../authorize/context.jsx";
+import Button from "../adsPage/componentes/StyledButton.jsx";
+function LoginPage() {
+  const { isLogged, onLogin } = useAuth();
   const [formValues, setFormValues] = useState({
     username: "",
     password: "",
@@ -26,6 +29,7 @@ function LoginPage({ onLogin }) {
         password: formValues.password,
       });
       onLogin();
+
       navigate("/adverts");
     } catch (error) {
       throw new Error(error);
@@ -74,13 +78,13 @@ function LoginPage({ onLogin }) {
             checked={checked}
             onChange={(event) => setChecked(event.target.checked)}
           />
-          <button
+          <Button
             className="logIn-Button"
             type="submit"
             disabled={buttonDisabled}
           >
             Login
-          </button>
+          </Button>
         </form>
       </div>
     </Layout>

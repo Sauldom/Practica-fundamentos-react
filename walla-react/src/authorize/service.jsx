@@ -1,4 +1,4 @@
-import { client, setAuthHeader } from "../client/client.jsx";
+import { client, removeAuthHeader, setAuthHeader } from "../client/client.jsx";
 import storage from "../util/storage.jsx";
 
 export const login = async (credentials) => {
@@ -8,4 +8,9 @@ export const login = async (credentials) => {
   });
 };
 
-export default login;
+export const logout = () => {
+  return Promise.resolve().then(() => {
+    removeAuthHeader();
+    storage.remove("auth");
+  });
+};
