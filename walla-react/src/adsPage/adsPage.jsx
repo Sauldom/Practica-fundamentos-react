@@ -16,13 +16,17 @@ function AdsPage() {
   return (
     <Layout>
       <div className="titulo">Pagina de anuncios</div>
-      <ul>
-        {ads.map(({ id, ...ad }) => (
-          <li key={id}>
-            <Advertisement {...ad} />
-          </li>
-        ))}
-      </ul>
+      {ads.length ? (
+        <ul>
+          {ads.map(({ id, ...ad }) => (
+            <li key={id}>
+              <Advertisement {...ad} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul>Se el primero en crear el anuncio</ul>
+      )}
     </Layout>
   );
 }
