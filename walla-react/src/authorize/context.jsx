@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import storage from "../util/storage.jsx";
+import PropTypes from "prop-types";
 
 const AuthContext = createContext();
 
@@ -21,7 +22,10 @@ export const AuthContextProvider = ({ isDefaultLogged, children }) => {
     <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
   );
 };
-
+AuthContextProvider.propTypes = {
+  children: PropTypes.node,
+  isDefaultLogged: PropTypes.bool.isRequired,
+};
 export const useAuth = () => {
   const auth = useContext(AuthContext);
   return auth;

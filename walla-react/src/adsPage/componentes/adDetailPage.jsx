@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "./layout/Layout";
 import { useEffect, useState } from "react";
 import { getAdsDetail } from "../../service/service.jsx";
@@ -7,14 +7,16 @@ import Advertisement from "./advertisement.jsx";
 function AdDetailPage() {
   const params = useParams();
   const [ad, setAd] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     async function getAdsDetailFromService() {
       try {
         const ad = await getAdsDetail(params.id);
         setAd(ad);
-        console.log(ad);
       } catch (error) {
-        console.error("Hubo un error al traer el ad: ", error);
+        if (error.status === 404) {
+          navigate("/404");
+        }
       }
     }
     getAdsDetailFromService();

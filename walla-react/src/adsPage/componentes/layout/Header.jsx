@@ -2,6 +2,7 @@ import LogoComponent from "../../../assets/LogoComponent";
 import Button from "../StyledButton";
 import { useAuth } from "../../../authorize/context.jsx";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import LogoutButton from "../logoutButton/logOut.jsx";
 
 function Header() {
   const { isLogged, onLogout } = useAuth();
@@ -21,9 +22,7 @@ function Header() {
           </NavLink>
 
           {isLogged ? (
-            <NavLink to="/">
-              <Button onClick={onLogout}>Log out</Button>
-            </NavLink>
+            <LogoutButton onClick={onLogout}>Log out</LogoutButton>
           ) : null}
         </nav>
       )}

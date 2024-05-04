@@ -5,7 +5,7 @@ import Layout from "../adsPage/componentes/layout/Layout.jsx";
 import { useAuth } from "../authorize/context.jsx";
 import Button from "../adsPage/componentes/StyledButton.jsx";
 function LoginPage() {
-  const { isLogged, onLogin } = useAuth();
+  const { onLogin } = useAuth();
   const [formValues, setFormValues] = useState({
     username: "",
     password: "",
@@ -13,8 +13,12 @@ function LoginPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
-  const buttonDisabled = !formValues.username || !formValues.password;
+  const [error, setError] = useState();
+  const [waiting, setWaiting] = useState(false);
+  const buttonDisabled =
+    !formValues.username || !formValues.password || waiting;
   const handleChange = (event) => {
+    resetError();
     const { name, value } = event.target;
     setFormValues((currentValues) => ({
       ...currentValues,
@@ -25,16 +29,22 @@ function LoginPage() {
     event.preventDefault();
 
     try {
+      setWaiting(true);
       await login({
         email: formValues.username,
         password: formValues.password,
       });
+      setWaiting(false);
       onLogin();
       const toUrl = location.state?.from || "/adverts";
       navigate(toUrl, { replace: true });
     } catch (error) {
-      throw new Error(error);
+      setWaiting(false);
+      setError(error);
     }
+  };
+  const resetError = () => {
+    setError(null);
   };
   return (
     <Layout>
@@ -87,6 +97,9 @@ function LoginPage() {
             Login
           </Button>
         </form>
+        {error && (
+          <div className="loginPage-error">{`El usuario ha recibido este error: ${error.message}`}</div>
+        )}
       </div>
     </Layout>
   );

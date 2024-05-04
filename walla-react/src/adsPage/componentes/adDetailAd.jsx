@@ -1,4 +1,5 @@
 import { formatDistanceToNow } from "date-fns";
+import { PropTypes } from "prop-types";
 
 const AdvertisementDetail = ({
   id,
@@ -28,5 +29,13 @@ const AdvertisementDetail = ({
     </div>
   );
 };
-
+AdvertisementDetail.propTypes = {
+  id: PropTypes.string.isRequired,
+  createdAt: PropTypes.instanceOf(Date).isRequired,
+  name: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  sale: PropTypes.bool.isRequired,
+  price: PropTypes.number.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 export default AdvertisementDetail;
