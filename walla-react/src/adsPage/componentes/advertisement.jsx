@@ -1,4 +1,5 @@
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { PropTypes } from "prop-types";
 
 const Advertisement = ({ createdAt, name, photo, sale, price, tags }) => {
   const formattedDate = formatDistanceToNow(new Date(createdAt), {
@@ -22,5 +23,12 @@ const Advertisement = ({ createdAt, name, photo, sale, price, tags }) => {
     </>
   );
 };
-
+Advertisement.propTypes = {
+  createdAt: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  sale: PropTypes.bool.isRequired,
+  price: PropTypes.number.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 export default Advertisement;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 function LogoComponent({ width, height }) {
   return (
     <div>
@@ -12,5 +13,8 @@ function LogoComponent({ width, height }) {
     </div>
   );
 }
-
+LogoComponent.propTypes = {
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+};
 export default LogoComponent;

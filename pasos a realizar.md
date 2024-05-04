@@ -49,3 +49,5 @@ me daba un error por no tener el campo email bien puesto
 # podemos pasar props hacia abajo
 
 con {..props} y con {xx, ..rest}
+
+# estamos lintando con proptypes aun nos quedan 1 error yalgun warning pero para otro momento

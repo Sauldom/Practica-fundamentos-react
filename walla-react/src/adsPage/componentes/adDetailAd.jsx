@@ -1,15 +1,7 @@
 import { formatDistanceToNow } from "date-fns";
 import { PropTypes } from "prop-types";
 
-const AdvertisementDetail = ({
-  id,
-  createdAt,
-  name,
-  photo,
-  sale,
-  price,
-  tags,
-}) => {
+const AdvertisementDetail = ({ createdAt, name, photo, sale, price, tags }) => {
   const createdAtDate = new Date(createdAt);
 
   const formattedDate = formatDistanceToNow(createdAtDate, { addSuffix: true });
@@ -30,7 +22,6 @@ const AdvertisementDetail = ({
   );
 };
 AdvertisementDetail.propTypes = {
-  id: PropTypes.string.isRequired,
   createdAt: PropTypes.instanceOf(Date).isRequired,
   name: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
