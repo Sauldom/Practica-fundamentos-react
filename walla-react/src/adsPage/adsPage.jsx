@@ -10,7 +10,6 @@ function AdsPage() {
   useEffect(() => {
     getAds().then((ads) => {
       setAds(ads);
-      console.log(ads);
     });
   }, []);
 

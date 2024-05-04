@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { login } from "../authorize/service.jsx";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Layout from "../adsPage/componentes/layout/Layout.jsx";
 import { useAuth } from "../authorize/context.jsx";
 import Button from "../adsPage/componentes/StyledButton.jsx";
@@ -10,6 +10,7 @@ function LoginPage() {
     username: "",
     password: "",
   });
+  const location = useLocation();
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
   const buttonDisabled = !formValues.username || !formValues.password;
@@ -29,8 +30,8 @@ function LoginPage() {
         password: formValues.password,
       });
       onLogin();
-
-      navigate("/adverts");
+      const toUrl = location.state?.from || "/adverts";
+      navigate(toUrl, { replace: true });
     } catch (error) {
       throw new Error(error);
     }

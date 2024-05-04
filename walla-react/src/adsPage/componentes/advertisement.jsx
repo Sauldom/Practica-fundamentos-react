@@ -12,7 +12,11 @@ const Advertisement = ({ createdAt, name, photo, sale, price, tags }) => {
         <img className="ad-photo" src={photo} alt="Foto del anuncio" />
         <div className="ad-sale"> {sale ? "En venta" : "En compra"}</div>
         <div className="ad-price">{price} €</div>
-        <div className="tags">{tags.join(", ")}</div>
+        <div className="tags">
+          {tags.map((tag, index) => (
+            <div key={index}>{tag}</div>
+          ))}
+        </div>
         <time dateTime={createdAt}>{formattedDate}</time>
       </div>
     </>
