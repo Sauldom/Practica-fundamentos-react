@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getAds } from "../service/service.jsx";
 import Advertisement from "./componentes/advertisement.jsx";
 import Layout from "./componentes/layout/Layout.jsx";
+import { Link } from "react-router-dom";
 
 function AdsPage() {
   const [ads, setAds] = useState([]);
@@ -20,7 +21,9 @@ function AdsPage() {
         <ul>
           {ads.map(({ id, ...ad }) => (
             <li key={id}>
-              <Advertisement {...ad} />
+              <Link to={`/adverts/${id}`}>
+                <Advertisement {...ad} />
+              </Link>
             </li>
           ))}
         </ul>
