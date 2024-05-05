@@ -9,7 +9,15 @@ const AdvertisementDetail = ({ createdAt, name, photo, sale, price, tags }) => {
   return (
     <div className="advertisement">
       <div className="ad-name">{name}</div>
-      <img className="ad-photo" src={photo} alt="Advertisement Photo" />
+      <img
+        className="ad-photo"
+        src={
+          photo
+            ? photo
+            : "https://cdn-icons-png.flaticon.com/512/3271/3271001.png"
+        }
+        alt="Advertisement Photo"
+      />
       <div className="ad-sale">{sale ? "En venta" : "En compra"}</div>
       <div className="ad-price">{price} €</div>
       <div className="ad-tags">

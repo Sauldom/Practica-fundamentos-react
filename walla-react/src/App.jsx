@@ -5,6 +5,7 @@ import { Route, Routes, Navigate, Outlet } from "react-router-dom";
 import NewAdsPage from "./newAdsPage/newAdsPage.jsx";
 import AdDetailPage from "./adsPage/componentes/adDetailPage.jsx";
 import AuthRoute from "./authorize/components/ProtectRoutes.jsx";
+import NotFoundPage from "./util/errorPage.jsx";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
       <Route path="/" element={<Navigate to="/login" />} />
 
       <Route path="*" element={<Navigate to="/404" />} />
-      <Route path="/404" element={<div>404 Not found</div>} />
+      <Route path="/404" element={<NotFoundPage />} />
     </Routes>
   );
 }

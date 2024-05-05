@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Layout from "../adsPage/componentes/layout/Layout.jsx";
 import { useAuth } from "../authorize/context.jsx";
 import Button from "../adsPage/componentes/StyledButton.jsx";
+import "./loginPageStyle.css";
 function LoginPage() {
   const { onLogin } = useAuth();
   const [formValues, setFormValues] = useState({

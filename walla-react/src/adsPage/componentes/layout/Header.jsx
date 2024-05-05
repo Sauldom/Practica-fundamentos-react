@@ -3,7 +3,7 @@ import Button from "../StyledButton";
 import { useAuth } from "../../../authorize/context.jsx";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import LogoutButton from "../logoutButton/logOut.jsx";
-
+import "./headerStyle.css";
 function Header() {
   const { isLogged, onLogout } = useAuth();
   const location = useLocation();
@@ -19,12 +19,14 @@ function Header() {
         <nav>
           {location.pathname !== "/adverts/new" && (
             <NavLink to="/adverts/new">
-              <Button>Crear Anuncio</Button>
+              <Button className="">Crear Anuncio</Button>
             </NavLink>
           )}
 
           {isLogged ? (
-            <LogoutButton onClick={onLogout}>Log out</LogoutButton>
+            <LogoutButton className="logout-button" onClick={onLogout}>
+              Log out
+            </LogoutButton>
           ) : null}
         </nav>
       )}

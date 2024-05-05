@@ -2,8 +2,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Layout from "./layout/Layout";
 import { useEffect, useState } from "react";
 import { deleteAd, getAdsDetail } from "../../service/service.jsx";
-import Advertisement from "./advertisement.jsx";
 import Button from "./StyledButton.jsx";
+import AdvertisementDetail from "./adDetailAd.jsx";
 
 function AdDetailPage() {
   const params = useParams();
@@ -38,7 +38,7 @@ function AdDetailPage() {
     <Layout>
       <div className="titulo-detalle">Página de detalle de anuncio</div>
       {ad ? (
-        <Advertisement
+        <AdvertisementDetail
           id={ad.id}
           createdAt={ad.createdAt}
           name={ad.name}

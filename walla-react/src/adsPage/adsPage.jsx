@@ -3,6 +3,7 @@ import { getAds } from "../service/service.jsx";
 import Advertisement from "./componentes/advertisement.jsx";
 import Layout from "./componentes/layout/Layout.jsx";
 import { Link } from "react-router-dom";
+import "./adsPageStyle.css";
 
 function AdsPage() {
   const [ads, setAds] = useState([]);
@@ -39,7 +40,7 @@ function AdsPage() {
 
   return (
     <Layout>
-      <div className="titulo">Pagina de anuncios</div>
+      <h1 className="titulo">Pagina de anuncios</h1>
       <form className="from-filter">
         <div className="filters">
           <label htmlFor="name">Filtrar por nombre:</label>

@@ -1,0 +1,51 @@
+.titulo {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-filter {
+  margin-bottom: 20px;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filter-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.filter-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.radio-options {
+  display: flex;
+  margin-top: 5px;
+}
+
+.radio-label {
+  margin-right: 20px;
+}
+
+.ad-list {
+  list-style: none;
+  padding: 0;
+}
+
+.ad-item {
+  margin-bottom: 20px;
+}
+
+.ad-link {
+  text-decoration: none;
+  color: #333;
+}
+
+.no-ads-message {
+  font-style: italic;
+}
