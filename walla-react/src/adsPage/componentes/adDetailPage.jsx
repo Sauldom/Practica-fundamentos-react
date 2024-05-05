@@ -33,7 +33,7 @@ function AdDetailPage() {
       }
     }
     getAdsDetailFromService();
-  }, [params.id]);
+  }, [params.id, navigate]);
   return (
     <Layout>
       <div className="titulo-detalle">Página de detalle de anuncio</div>
@@ -54,8 +54,12 @@ function AdDetailPage() {
       {showConfirm && (
         <div>
           <p>¿Estás seguro de que deseas borrar este anuncio?</p>
-          <button onClick={confirmDelete}>Sí</button>
-          <button onClick={cancelDelete}>Cancelar</button>
+          <Button className="delete-button" onClick={confirmDelete}>
+            Sí
+          </Button>
+          <Button className="delete-button" onClick={cancelDelete}>
+            Cancelar
+          </Button>
         </div>
       )}
     </Layout>

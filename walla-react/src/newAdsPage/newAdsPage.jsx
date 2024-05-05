@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function NewAdsPage() {
   const [formData, setFormData] = useState({
     name: "",
-    sale: true,
+    sale: false,
     tags: [],
     price: 0,
     //photo: null,
@@ -26,6 +26,7 @@ function NewAdsPage() {
   };
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
+
     setFormData({ ...formData, [name]: checked });
   };
   const handleTagsChange = (event) => {
@@ -74,7 +75,7 @@ function NewAdsPage() {
               checked={formData.sale}
               onChange={handleCheckboxChange}
             />
-            Compra / Venta
+            Marca para poner en venta
           </label>
         </div>
         <div>

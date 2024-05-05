@@ -3,7 +3,7 @@ import { logout } from "../../../authorize/service.jsx";
 import Button from "../StyledButton.jsx";
 import PropTypes from "prop-types";
 
-function LogoutButton({ onLogout }) {
+function LogoutButton() {
   const navigate = useNavigate();
   const handleLogout = () => {
     const confirmLogout = window.confirm(
