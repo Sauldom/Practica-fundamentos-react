@@ -17,9 +17,11 @@ function Header() {
       </Link>
       {location.pathname !== "/login" && (
         <nav>
-          <NavLink to="/adverts/new">
-            <Button>Crear Anuncio</Button>
-          </NavLink>
+          {location.pathname !== "/adverts/new" && (
+            <NavLink to="/adverts/new">
+              <Button>Crear Anuncio</Button>
+            </NavLink>
+          )}
 
           {isLogged ? (
             <LogoutButton onClick={onLogout}>Log out</LogoutButton>

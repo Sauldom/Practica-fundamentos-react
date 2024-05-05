@@ -10,3 +10,11 @@ export const getAdsDetail = (adsId) => {
   const url = `${adsUrl}/${adsId}`;
   return client.get(url);
 };
+
+export const getTags = () => {
+  const url = `${adsUrl}/tags`;
+  return client.get(url);
+};
+export const createAd = (ad) => {
+  return client.post(adsUrl, ad);
+};

@@ -26,7 +26,7 @@ const Advertisement = ({ createdAt, name, photo, sale, price, tags }) => {
 Advertisement.propTypes = {
   createdAt: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  photo: PropTypes.string.isRequired,
+  photo: PropTypes.string,
   sale: PropTypes.bool.isRequired,
   price: PropTypes.number.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
