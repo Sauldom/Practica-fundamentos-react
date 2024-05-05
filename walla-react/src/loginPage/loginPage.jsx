@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { login } from "../authorize/service.jsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import Layout from "../adsPage/componentes/layout/Layout.jsx";
@@ -30,7 +30,6 @@ function LoginPage() {
     setChecked((prevChecked) => !prevChecked);
   };
 
-  console.log("handle check", checked);
   const handleSubmit = async (event) => {
     event.preventDefault();
 
