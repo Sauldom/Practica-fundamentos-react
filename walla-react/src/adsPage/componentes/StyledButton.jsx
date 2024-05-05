@@ -11,6 +11,10 @@ const Button = styled.button`
   outline: none;
   transition: background-color 0.3s ease;
 
+  &:disabled{
+    opacity: 0.5;
+  }
+
   &:hover {
     background-color: #2c3e50; 
 `;

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Layout from "../adsPage/componentes/layout/Layout";
 import { createAd, getTags } from "../service/service.jsx";
 import { useNavigate } from "react-router-dom";
+import Button from "../adsPage/componentes/StyledButton.jsx";
 
 function NewAdsPage() {
   const [formData, setFormData] = useState({
@@ -12,8 +13,13 @@ function NewAdsPage() {
     //photo: null,
   });
   const [tags, setTags] = useState([]);
+  const [isFormValid, setIsFormValid] = useState(false);
   const navigate = useNavigate();
-
+  useEffect(() => {
+    const isValid =
+      formData.name && formData.price > 0 && formData.tags.length > 0;
+    setIsFormValid(isValid);
+  }, [formData]);
   useEffect(() => {
     getTags().then((tag) => {
       setTags(tag);
@@ -40,7 +46,6 @@ function NewAdsPage() {
     setFormData({ ...formData, tags: selectedTags });
   };
   const handleSubmit = async (event) => {
-    console.log(formData);
     event.preventDefault();
     try {
       const createdAd = await createAd(formData);
@@ -116,7 +121,9 @@ function NewAdsPage() {
             onChange={handleInputChange}
           />
         </div>
-        <button type="submit">Crear Anuncio</button>
+        <Button type="submit" disabled={!isFormValid}>
+          Crear Anuncio
+        </Button>
       </form>
     </Layout>
   );
