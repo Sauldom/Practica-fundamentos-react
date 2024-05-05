@@ -3,7 +3,7 @@ import Layout from "../adsPage/componentes/layout/Layout";
 import { createAd, getTags } from "../service/service.jsx";
 import { useNavigate } from "react-router-dom";
 import Button from "../adsPage/componentes/StyledButton.jsx";
-
+import "./newAdsPageStyle.css";
 function NewAdsPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -73,8 +73,9 @@ function NewAdsPage() {
           />
         </div>
         <div>
-          <label>
+          <label className="checkbox-sale-label">
             <input
+              className="checkbox-sale"
               type="checkbox"
               name="sale"
               checked={formData.sale}
