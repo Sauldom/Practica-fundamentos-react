@@ -1,0 +1,33 @@
+.titulo-detalle {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Estilos para el botón */
+.button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para el mensaje de confirmación */
+.confirmation-message {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+}
+.confirmation-message p {
+  margin: 0;
+}
+.confirmation-message .delete-button {
+  margin-right: 10px;
+}

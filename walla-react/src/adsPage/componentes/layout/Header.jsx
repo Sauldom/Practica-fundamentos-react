@@ -19,7 +19,7 @@ function Header() {
         <nav>
           {location.pathname !== "/adverts/new" && (
             <NavLink to="/adverts/new">
-              <Button className="">Crear Anuncio</Button>
+              <Button className="new-ad-button">Crear Anuncio</Button>
             </NavLink>
           )}
 

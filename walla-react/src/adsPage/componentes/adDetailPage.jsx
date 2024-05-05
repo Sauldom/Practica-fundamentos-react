@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { deleteAd, getAdsDetail } from "../../service/service.jsx";
 import Button from "./StyledButton.jsx";
 import AdvertisementDetail from "./adDetailAd.jsx";
+import "./adDetailPageStyle.css";
 
 function AdDetailPage() {
   const params = useParams();
@@ -36,7 +37,7 @@ function AdDetailPage() {
   }, [params.id, navigate]);
   return (
     <Layout>
-      <div className="titulo-detalle">Página de detalle de anuncio</div>
+      <h1 className="titulo-detalle">Página de detalle de anuncio</h1>
       {ad ? (
         <AdvertisementDetail
           id={ad.id}
