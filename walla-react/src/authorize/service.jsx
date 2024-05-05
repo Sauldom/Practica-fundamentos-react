@@ -1,9 +1,11 @@
 import { client, removeAuthHeader, setAuthHeader } from "../client/client.jsx";
 import storage from "../util/storage.jsx";
 
-export const login = async (credentials) => {
+export const login = async (credentials, Check) => {
   return client.post("/api/auth/login", credentials).then(({ accessToken }) => {
-    storage.set("auth", accessToken);
+    Check
+      ? storage.setLocal("auth", accessToken)
+      : storage.setSession("auth", accessToken);
     setAuthHeader(accessToken);
   });
 };

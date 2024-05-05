@@ -1,13 +1,19 @@
 const storage = {
   get(key) {
-    const value = localStorage.getItem(key);
+    let value = localStorage.getItem(key);
+    if (!value) {
+      value = sessionStorage.getItem(key);
+    }
     if (!value) {
       return null;
     }
     return JSON.parse(value);
   },
-  set(key, value) {
+  setLocal(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
+  },
+  setSession(key, value) {
+    sessionStorage.setItem(key, JSON.stringify(value));
   },
   remove(key) {
     localStorage.removeItem(key);

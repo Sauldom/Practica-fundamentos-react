@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { login } from "../authorize/service.jsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import Layout from "../adsPage/componentes/layout/Layout.jsx";
@@ -13,6 +13,7 @@ function LoginPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
+
   const [error, setError] = useState();
   const [waiting, setWaiting] = useState(false);
   const buttonDisabled =
@@ -25,15 +26,24 @@ function LoginPage() {
       [name]: value,
     }));
   };
+  const handleChecked = () => {
+    setChecked((prevChecked) => !prevChecked);
+  };
+
+  console.log("handle check", checked);
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
       setWaiting(true);
-      await login({
-        email: formValues.username,
-        password: formValues.password,
-      });
+
+      await login(
+        {
+          email: formValues.username,
+          password: formValues.password,
+        },
+        checked
+      );
       setWaiting(false);
       onLogin();
       const toUrl = location.state?.from || "/adverts";
@@ -87,7 +97,7 @@ function LoginPage() {
             id="login-checkbox"
             className="loginForm-field"
             checked={checked}
-            onChange={(event) => setChecked(event.target.checked)}
+            onChange={handleChecked}
           />
           <Button
             className="logIn-Button"
