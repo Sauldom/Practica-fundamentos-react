@@ -29,7 +29,6 @@ function AdsPage() {
       return nameFilter && saleFilter;
     });
     setModAds(filteredAds);
-    console.log(filteredAds);
   }, [filters, ads, setModAds]);
   useEffect(() => {
     getAds().then((ads) => {

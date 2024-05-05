@@ -1,5 +1,6 @@
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { PropTypes } from "prop-types";
+import "./advertisementStyle.css";
 
 const Advertisement = ({ createdAt, name, photo, sale, price, tags }) => {
   const formattedDate = formatDistanceToNow(new Date(createdAt), {
