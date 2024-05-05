@@ -18,3 +18,8 @@ export const getTags = () => {
 export const createAd = (ad) => {
   return client.post(adsUrl, ad);
 };
+
+export const deleteAd = (adId) => {
+  const url = `${adsUrl}/${adId}`;
+  return client.delete(url);
+};

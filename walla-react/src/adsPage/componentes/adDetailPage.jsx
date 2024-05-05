@@ -1,13 +1,26 @@
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "./layout/Layout";
 import { useEffect, useState } from "react";
-import { getAdsDetail } from "../../service/service.jsx";
+import { deleteAd, getAdsDetail } from "../../service/service.jsx";
 import Advertisement from "./advertisement.jsx";
+import Button from "./StyledButton.jsx";
 
 function AdDetailPage() {
   const params = useParams();
   const [ad, setAd] = useState(null);
   const navigate = useNavigate();
+  const handleDelete = () => {
+    setShowConfirm(true);
+  };
+  const confirmDelete = () => {
+    deleteAd(ad.id);
+    setShowConfirm(false);
+    navigate("/adverts");
+  };
+  const cancelDelete = () => {
+    setShowConfirm(false);
+  };
+  const [showConfirm, setShowConfirm] = useState(false);
   useEffect(() => {
     async function getAdsDetailFromService() {
       try {
@@ -36,6 +49,14 @@ function AdDetailPage() {
         />
       ) : (
         <div>Cargando...</div>
+      )}
+      <Button onClick={handleDelete}>Desea borrar</Button>
+      {showConfirm && (
+        <div>
+          <p>¿Estás seguro de que deseas borrar este anuncio?</p>
+          <button onClick={confirmDelete}>Sí</button>
+          <button onClick={cancelDelete}>Cancelar</button>
+        </div>
       )}
     </Layout>
   );
