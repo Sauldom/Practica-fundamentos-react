@@ -8,18 +8,28 @@ function AdsPage() {
   const [ads, setAds] = useState([]);
   const [filters, setFilters] = useState({
     name: "",
-    sale: true,
+    sale: "todos",
   });
   const [modAds, setModAds] = useState([]);
+
+  const handleSaleChange = (event) => {
+    setFilters({ ...filters, sale: event.target.value });
+  };
 
   const handleFilters = (event) => {
     setFilters({ ...filters, name: event.target.value });
   };
   useEffect(() => {
     const filteredAds = ads.filter((ad) => {
-      return ad.name.toLowerCase().includes(filters.name.toLowerCase());
+      const nameFilter = ad.name
+        .toLowerCase()
+        .includes(filters.name.toLowerCase());
+      const saleFilter =
+        filters.sale === "todos" || ad.sale === (filters.sale === "venta");
+      return nameFilter && saleFilter;
     });
     setModAds(filteredAds);
+    console.log(filteredAds);
   }, [filters, ads, setModAds]);
   useEffect(() => {
     getAds().then((ads) => {
@@ -39,7 +49,38 @@ function AdsPage() {
             placeholder="Filtrar por nombre"
             value={filters.name}
             onInput={handleFilters}
-          />
+          />{" "}
+          <br />
+          <label htmlFor="venta-checkbox" className="venta-checkbox">
+            Filtrar por venta
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="venta"
+              checked={filters.sale === "venta"}
+              onChange={handleSaleChange}
+            />
+            Venta
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="compra"
+              checked={filters.sale === "compra"}
+              onChange={handleSaleChange}
+            />
+            Compra
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="todos"
+              checked={filters.sale === "todos"}
+              onChange={handleSaleChange}
+            />
+            Todos
+          </label>
         </div>
       </form>
 
